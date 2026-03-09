@@ -25,17 +25,21 @@ return new class extends Migration
         });
 
         // Add current_team_id to users table if we want to track active team context
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('current_team_id')->nullable()->constrained('authkit_teams')->nullOnDelete();
-        });
+        if (Schema::hasTable('users') && !Schema::hasColumn('users', 'current_team_id')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->foreignId('current_team_id')->nullable()->constrained('authkit_teams')->nullOnDelete();
+            });
+        }
     }
 
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['current_team_id']);
-            $table->dropColumn('current_team_id');
-        });
+        if (Schema::hasTable('users') && Schema::hasColumn('users', 'current_team_id')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropForeign(['current_team_id']);
+                $table->dropColumn('current_team_id');
+            });
+        }
 
         Schema::dropIfExists('authkit_team_user');
         Schema::dropIfExists('authkit_teams');
