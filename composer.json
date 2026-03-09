@@ -2,7 +2,14 @@
     "name": "kenad/laravel-authkit",
     "description": "A professional Laravel API authentication package with Sanctum, device management, email verification, password reset and rate limiting.",
     "type": "library",
-    "keywords": ["laravel", "auth", "sanctum", "api", "authentication", "package"],
+    "keywords": [
+        "laravel",
+        "auth",
+        "sanctum",
+        "api",
+        "authentication",
+        "package"
+    ],
     "homepage": "https://github.com/kenad/laravel-authkit",
     "license": "MIT",
     "authors": [
@@ -24,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "kenad\\AuthKit\\": "src/"
+            "Kenad\\AuthKit\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "kenad\\AuthKit\\Tests\\": "tests/"
+            "Kenad\\AuthKit\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -38,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "kenad\\AuthKit\\AuthKitServiceProvider"
+                "Kenad\\AuthKit\\AuthKitServiceProvider"
             ],
             "aliases": {
-                "AuthKit": "kenad\\AuthKit\\Facades\\AuthKit"
+                "AuthKit": "Kenad\\AuthKit\\Facades\\AuthKit"
             }
         }
     },
