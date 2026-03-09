@@ -13,6 +13,10 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
+        // Load default Laravel migrations (like the users table)
+        $this->loadLaravelMigrations();
+        
+        // Load package specific migrations
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
