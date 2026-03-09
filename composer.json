@@ -1,0 +1,56 @@
+{
+    "name": "kenad/laravel-authkit",
+    "description": "A professional Laravel API authentication package with Sanctum, device management, email verification, password reset and rate limiting.",
+    "type": "library",
+    "keywords": ["laravel", "auth", "sanctum", "api", "authentication", "package"],
+    "homepage": "https://github.com/kenad/laravel-authkit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kenad",
+            "email": "kenad@example.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^10.0|^11.0|^12.0",
+        "laravel/sanctum": "^3.2|^4.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "pestphp/pest": "^2.0|^3.0",
+        "pestphp/pest-plugin-laravel": "^2.0|^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "kenad\\AuthKit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "kenad\\AuthKit\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/pest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "kenad\\AuthKit\\AuthKitServiceProvider"
+            ],
+            "aliases": {
+                "AuthKit": "kenad\\AuthKit\\Facades\\AuthKit"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
