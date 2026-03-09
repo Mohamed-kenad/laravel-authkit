@@ -59,6 +59,7 @@ class AuthController extends Controller
             $result = $this->authService->login(
                 LoginData::fromArray($request->validated()),
                 $request->input('device_name'),
+                $request->input('platform'),
             );
 
             return ResponseFormatter::success([

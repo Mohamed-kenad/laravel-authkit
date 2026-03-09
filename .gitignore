@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+/.idea/
+/.vscode/
+.phpunit.result.cache
+*.txt
+logs.txt
+test_output.txt
+last_error.txt
+.env
+.DS_Store

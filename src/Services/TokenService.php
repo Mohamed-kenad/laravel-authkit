@@ -7,6 +7,8 @@ namespace Kenad\AuthKit\Services;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Kenad\AuthKit\Contracts\TokenServiceInterface;
 
+use Illuminate\Support\Facades\DB;
+
 class TokenService implements TokenServiceInterface
 {
     public function create(Authenticatable $user, string $name, array $abilities = ['*']): string
@@ -22,17 +24,27 @@ class TokenService implements TokenServiceInterface
 
     public function revokeCurrent(Authenticatable $user): void
     {
-        // currentAccessToken() is provided by HasApiTokens
-        $user->currentAccessToken()?->delete();
+        $token = $user->currentAccessToken();
+
+        if ($token && isset($token->id)) {
+            DB::table('personal_access_tokens')->where('id', $token->id)->delete();
+        }
     }
 
     public function revokeAll(Authenticatable $user): void
     {
-        $user->tokens()->delete();
+        DB::table('personal_access_tokens')
+            ->where('tokenable_type', get_class($user))
+            ->where('tokenable_id', $user->getKey())
+            ->delete();
     }
 
     public function revokeById(Authenticatable $user, int $tokenId): bool
     {
-        return (bool) $user->tokens()->where('id', $tokenId)->delete();
+        return (bool) DB::table('personal_access_tokens')
+            ->where('tokenable_type', get_class($user))
+            ->where('tokenable_id', $user->getKey())
+            ->where('id', $tokenId)
+            ->delete();
     }
 }

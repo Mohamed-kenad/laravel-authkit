@@ -203,7 +203,7 @@ Under the hood, AuthKit uses a highly scalable modular architecture inspired by 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## 🔐 Security Vulnerabilities
-If you discover any security-related issues, please email kenad@example.com instead of using the issue tracker.
+If you discover any security-related issues, please email mohamedkenad10@example.com instead of using the issue tracker.
 
 ## 📄 License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

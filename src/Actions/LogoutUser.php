@@ -30,5 +30,10 @@ final class LogoutUser
         }
 
         event(new Logout('sanctum', $user));
+
+        // Clear resolved instances to avoid caching issues in tests/long-running processes
+        if (app()->bound('auth')) {
+            auth()->forgetGuards();
+        }
     }
 }

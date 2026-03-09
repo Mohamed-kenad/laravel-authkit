@@ -22,7 +22,7 @@ interface AuthServiceInterface
      *
      * @return array{user: Authenticatable, token: string}
      */
-    public function login(LoginData $data, ?string $deviceName = null): array;
+    public function login(LoginData $data, ?string $deviceName = null, ?string $platform = null): array;
 
     /**
      * Revoke the current token (logout from current device).

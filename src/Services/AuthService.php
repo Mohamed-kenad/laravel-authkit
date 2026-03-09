@@ -28,9 +28,9 @@ class AuthService implements AuthServiceInterface
     /**
      * @return array{user: Authenticatable, token: string}
      */
-    public function login(LoginData $data, ?string $deviceName = null): array
+    public function login(LoginData $data, ?string $deviceName = null, ?string $platform = null): array
     {
-        return $this->loginUser->execute($data, $deviceName);
+        return $this->loginUser->execute($data, $deviceName, $platform);
     }
 
     public function logout(Authenticatable $user): void
